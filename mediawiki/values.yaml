@@ -1,0 +1,34 @@
+registryDetails:
+  secretName: docker-cred
+  registry: 
+  username: 
+  password: 
+  email: 
+
+mediawiki-app:
+  image:
+    repository: image
+    tag: tag
+    pullPolicy: IfNotPresent
+  imagePullSecrets: []
+  service:
+    type: NodePort
+    port: 80
+  ingress:
+    enabled: false
+    annotations: {}
+    hosts:
+      - host: chart-example.local
+        paths: []
+mediawiki-database:
+  rootUser:
+    password: "Redhat@123"
+  db:
+    user: mediawiki
+    password: "Redhat@123"
+    name: mediawiki
+  master:
+    persistence:
+      enabled: false
+      size: 8Gi
+      storageClass: ""
